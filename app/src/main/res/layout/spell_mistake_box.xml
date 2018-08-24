@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/alert_dialog_corners"
+    app:cardElevation="0dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close"
+            android:layout_alignParentRight="true"
+            android:padding="20dp"
+            />
+
+        <EditText
+            android:id="@+id/spell_ET"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:fontFamily="@font/loraregular"
+            android:hint="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+            android:layout_below="@id/close_button"/>
+
+        <LinearLayout
+            android:id="@+id/spell_button_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_below="@id/spell_ET"
+            android:layout_marginBottom="20dp"
+            >
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/categories_fill_selected"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:text="Edit"
+                android:textColor="#fff"
+                android:fontFamily="@font/loraregular"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Save"
+                android:fontFamily="@font/loraregular"
+                android:background="@drawable/read_more_capsule_button"/>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/or_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:padding="20dp"
+            android:textColor="#000"
+            android:layout_below="@+id/spell_button_holder"
+            android:layout_centerHorizontal="true"/>
+
+
+        <FrameLayout
+            android:id="@+id/query_ET"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_below="@+id/or_TV">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/semi_rectangle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Write and describe instead"
+                android:fontFamily="@font/ralewaysemibolditalic"
+                android:gravity="top"
+                android:layout_margin="30dp"
+                android:cursorVisible="false"
+                android:background="@null"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/read_more_capsule_button"
+            android:layout_below="@id/query_ET"
+            android:layout_centerHorizontal="true"
+            android:text="Send"
+            android:fontFamily="@font/loraregular"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

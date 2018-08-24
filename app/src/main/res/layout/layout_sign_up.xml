@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/logo"/>
+
+    <EditText
+        android:id="@+id/country"
+        android:layout_below="@+id/logo"
+        android:layout_width="match_parent"
+        android:text="India"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/loraregular"
+        android:editable="false"
+        android:layout_marginBottom="15dp"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/mobile_container"
+        android:layout_below="@+id/country"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/loraregular"
+        android:editable="false"
+        android:textSize="16sp"
+        android:text="+91"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/loraregular"
+            android:textSize="16sp"
+            android:hint="Mobile Number" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_signUp"
+        android:layout_below="@+id/mobile_container"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/loraregular"
+        android:background="@drawable/read_more_capsule_button"
+        android:text="Sign Up"/>
+
+    <TextView
+        android:id="@+id/tv_useEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_signUp"
+        android:text="Use Email instead?"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:fontFamily="@font/loraregular"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffbe33"/>
+    <LinearLayout
+        android:id="@+id/loginWith_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_useEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="60dp"
+            android:layout_height="1dp"
+            android:background="#aaa"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Or Login With"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/loraregular"
+        android:textColor="#000000"/>
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="1dp"
+            android:background="#aaa"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="12dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/social_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/loginWith_container"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/fb"/>
+        <ImageView
+            android:id="@+id/gmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/gmail"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_alreadyHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/social_container"
+        android:text="Already have an account?"
+        android:textSize="16sp"
+        android:fontFamily="@font/loraregular"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000"/>
+    <TextView
+        android:id="@+id/btn_Login"
+        android:layout_below="@+id/tv_alreadyHaveAccount"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/read_more_capsule_button"
+        android:fontFamily="@font/loraregular"
+        android:textSize="16sp"
+        android:text="Login"/>
+
+</RelativeLayout>

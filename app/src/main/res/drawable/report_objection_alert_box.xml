@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<card xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/alert_dialog_corners"
+    app:cardElevation="0dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close"
+            android:layout_alignParentRight="true"
+            android:padding="20dp"
+            />
+
+
+        <FrameLayout
+            android:id="@+id/query_ET"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/close_button">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/semi_rectangle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="write your query"
+                android:fontFamily="@font/ralewaysemibolditalic"
+                android:gravity="top"
+                android:layout_margin="30dp"
+                android:cursorVisible="false"
+                android:background="@null"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/read_more_capsule_button"
+            android:layout_below="@id/query_ET"
+            android:layout_centerHorizontal="true"
+            android:text="Post Now"
+            android:fontFamily="@font/loraregular"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+</card>

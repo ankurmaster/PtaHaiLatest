@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/alert_dialog_corners"
+    app:cardElevation="0dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close"
+            android:layout_alignParentRight="true"
+            android:padding="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/checkBox_holder"
+            android:layout_below="@id/close_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp">
+
+            <CheckBox
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image is objectionable"
+                android:fontFamily="@font/loraregular"
+                android:checked="true" />
+
+            <CheckBox
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Content is objectionable"
+                android:fontFamily="@font/loraregular"
+                />
+
+            <CheckBox
+                android:id="@+id/chkAndroid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="External link is objectionable"
+                android:fontFamily="@font/loraregular"
+                />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/query_ET"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/checkBox_holder">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/semi_rectangle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Write and describe instead"
+                android:fontFamily="@font/ralewaysemibolditalic"
+                android:gravity="top"
+                android:layout_margin="30dp"
+                android:cursorVisible="false"
+                android:background="@null"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/read_more_capsule_button"
+            android:layout_below="@id/query_ET"
+            android:layout_centerHorizontal="true"
+            android:text="Post Now"
+            android:fontFamily="@font/loraregular"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

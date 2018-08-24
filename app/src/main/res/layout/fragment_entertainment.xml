@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:id="@+id/subCatParentLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:focusable="false"
+    >
+
+    <FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/interactions_layout">
+
+
+
+
+        <LinearLayout
+        android:id="@+id/interactionHolderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+
+        <ImageView
+            android:id="@+id/like_IV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/like1"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+
+
+            <ImageView
+                android:id="@+id/clap_IV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/clap1"
+                android:layout_gravity="center"
+                />
+
+
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+
+        <ImageView
+            android:id="@+id/palm_IV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/ap1"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+
+        <ImageView
+            android:id="@+id/dislike_IV"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/dislike1"
+            />
+
+
+
+
+</LinearLayout>
+
+        <include layout="@layout/like_interaction_selected_layout"/>
+
+        <include layout="@layout/dislike_interaction_selected_layout"/>
+
+        <include layout="@layout/clap_interaction_selected_layout"/>
+
+        <include layout="@layout/palm_interaction_selected_layout"/>
+
+
+
+
+</FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/explore_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/explore_TV"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:text="Explore.."
+        android:textSize="17sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColor="#000"
+        android:gravity="center"/>
+
+     <View
+         android:id="@+id/explore_TV_underline"
+         android:layout_width="match_parent"
+         android:layout_height="2dp"
+         android:background="#f9ca10"
+         android:gravity="center"
+         android:layout_marginLeft="50dp"
+         android:layout_marginRight="50dp"/>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/subCatGrid"
+        android:layout_below="@id/interactions_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:focusableInTouchMode="true"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:layout_marginTop="50dp"
+        android:nestedScrollingEnabled="true"
+        >
+    </GridView>
+
+</RelativeLayout>

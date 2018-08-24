@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/back_flash_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp"
+    app:cardPreventCornerOverlap="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="5dp"
+        app:cardPreventCornerOverlap="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Go Back"
+            android:fontFamily="@font/ralewayregular"
+            android:gravity="center_horizontal|center_vertical"
+            />
+
+
+    </android.support.v7.widget.CardView>
+
+   <include layout="@layout/fragment_knowledge" />
+  <!-- <include layout="@layout/fragment_news"/>
+   <include layout="@layout/fragment_entertainment"/>-->
+
+
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/like_layout"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:alpha="0"
+    >
+
+    <View
+
+        android:id="@+id/fill_animation_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/categories_fill_selected"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_gravity="center_vertical"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginLeft="25dp"
+        android:text="Maza Aa Gaya"
+        android:fontFamily="@font/lorabolda"
+        android:textColor="#fff" />
+
+    <ImageView
+        android:id="@+id/setToDefaultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/like1"
+        android:tint="#fff"
+        android:padding="17dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginRight="25dp"/>
+
+</FrameLayout>

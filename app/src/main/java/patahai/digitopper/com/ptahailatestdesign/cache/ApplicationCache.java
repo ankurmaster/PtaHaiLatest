@@ -17,6 +17,7 @@ public class ApplicationCache {
     public ArrayList<FactObject>  KnowledgeListHindi = new ArrayList<>();
     public ArrayList<FactObject> HundredFacsList = new ArrayList<>();
     public ArrayList<FactObject> HundredFacsListHindi = new ArrayList<>();
+    public HashMap<String,Integer> TitleInteractionList = new HashMap<>();
 
 
     public ArrayList<FactObject> getNewsList() {
@@ -49,6 +50,10 @@ public class ApplicationCache {
 
     public ArrayList<FactObject> getHundredFacsListHindi() {
         return HundredFacsListHindi;
+    }
+
+    public HashMap<String, Integer> getTitleInteractionList() {
+        return TitleInteractionList;
     }
 
     private ApplicationCache()
@@ -111,5 +116,12 @@ public class ApplicationCache {
     public void setHundredFacsListHindi(FactObject object)
     {
         this.HundredFacsListHindi.add(object);
+    }
+
+    public void setStringsOfFactInHashMap(String title, Integer interactions){
+
+
+        TitleInteractionList.put(title,interactions);
+
     }
 }

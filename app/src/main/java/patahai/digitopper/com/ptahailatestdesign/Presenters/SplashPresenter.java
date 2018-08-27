@@ -4,6 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -31,12 +39,84 @@ public class SplashPresenter implements ConnectionInterface {
     }
     @Override
     public void getFactsFromServer() {
-        try
+
+
+
+        if(PersistentManager.getIsFirstTime()==1)
         {
-            userCreateAPI();
+
+          //  ArrayList<FactObject> list = readFactsFromFile().getFacts();
+          //  prepareFactsMap(list);
+          //  context.startActivity(new Intent(context.getApplicationContext(),MainActivity.class));
+            try {
+                userCreateAPI();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+
         }
-        catch (Exception e)
-        {
+        else {
+
+            try {
+                userCreateAPI();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+    }
+
+    private Facts readFactsFromFile() {
+
+        String ret = "";
+
+        try {
+            InputStream inputStream = context.openFileInput("FactsList.txt");
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+
+        Log.e("F",ret);
+
+        Gson gson = new Gson();
+        return gson.fromJson(ret, Facts.class);
+
+        }
+
+    private void writeFactsToFile(Facts object) {
+
+
+        try {
+
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("FactsList.txt",Context.MODE_PRIVATE));
+            outputStreamWriter.write(object.toString());
+            outputStreamWriter.close();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -47,67 +127,13 @@ public class SplashPresenter implements ConnectionInterface {
             @Override
             public void onSuccess(Facts object) {
                 ArrayList<FactObject> list = object.getFacts();
+                writeFactsToFile(object);
                 prepareFactsMap(list);
-                if(PersistentManager.getIsFirstTime()==1)
-                {
-                    context.startActivity(new Intent(context.getApplicationContext(),MainActivity.class));
-                }
-                else {
-                    context.startActivity(new Intent(context.getApplicationContext(), LanguageSelectorActivity.class));
-                    PersistentManager.setIsFirstTime(1);
-                }
+                context.startActivity(new Intent(context.getApplicationContext(), LanguageSelectorActivity.class));
+                PersistentManager.setIsFirstTime(1);
                 ((Splash)context).finish();
 
 
-              /*  for (int i=0;i<list.size();i++) {
-
-
-
-                    String language = list.get(i).getLanguage();
-                    String parent  = list.get(i).getParent();
-
-                    if(language.equalsIgnoreCase("hindi"))
-                    {
-
-                        DataLoader.HundredFacsListHindi.add(list.get(i));
-
-                        if(parent.equalsIgnoreCase("News"))
-                        {
-
-                            DataLoader.NewsListHindi.add(list.get(i));
-
-                        }
-                        else if(parent.equalsIgnoreCase("Entertainment")){
-
-                            DataLoader.EntertainmentListHindi.add(list.get(i));
-                        }
-                        else if(parent.equalsIgnoreCase("Knowledge")){
-
-                            DataLoader.KnowledgeListHindi.add(list.get(i));
-                        }
-                    }
-                    else
-                    {
-
-                        DataLoader.HundredFacsList.add(list.get(i));
-
-                            if(parent.equalsIgnoreCase("News")){
-
-                            DataLoader.NewsList.add(list.get(i));
-
-                        }else if(parent.equalsIgnoreCase("Entertainment")){
-
-                            DataLoader.EntertainmentList.add(list.get(i));
-                        }
-                        else if(parent.equalsIgnoreCase("Knowledge")){
-
-                            DataLoader.KnowledgeList.add(list.get(i));
-                        }
-
-                    }
-
-                }
-*/
             }
 
             @Override
@@ -117,6 +143,8 @@ public class SplashPresenter implements ConnectionInterface {
             }
         });
     }
+
+
 
     private void prepareFactsMap(ArrayList<FactObject> list)
     {

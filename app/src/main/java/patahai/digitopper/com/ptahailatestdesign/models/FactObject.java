@@ -10,6 +10,7 @@ public class FactObject implements Serializable {
     String category;
     String language;
     String parent;
+    Integer interaction;
 
     public FactObject(String title, String language, String image, String link, String category, String parent) {
         this.title = title;
@@ -77,5 +78,13 @@ public class FactObject implements Serializable {
 
     public void setParent(String parent) {
         this.parent = parent;
+    }
+
+    public Integer getInteraction() {
+        return interaction;
+    }
+
+    public void setInteraction(Integer interaction) {
+        this.interaction = interaction;
     }
 }

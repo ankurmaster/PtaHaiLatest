@@ -23,11 +23,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import patahai.digitopper.com.ptahailatestdesign.Utills.Constant;
+import patahai.digitopper.com.ptahailatestdesign.managers.CachingManager;
 import patahai.digitopper.com.ptahailatestdesign.models.FactObject;
 
 public class SlideFragment extends Fragment implements View.OnClickListener{
@@ -53,7 +55,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
     public RelativeLayout flash_card_parent;
     private Object object;
     private boolean isVisibleToUser = false;
-
+    Integer currentInteraction;
 
 
 
@@ -72,10 +74,13 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
         object = getArguments().getSerializable("FragObj");
 
+
+
         Glide.with(getActivity()).asBitmap().load(((FactObject)object).getImage().replaceAll("\\\\","")).into(flash_card_IV);
 
         setCurrentFlashCardCategory(object);
 
+       // setInteractionForFlashcard(object);
 
 
 
@@ -94,6 +99,14 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
         }
         longDesp_TV.setText(((FactObject)object).getTitle());
         category_TV.setText(((FactObject)object).getCategory());
+
+
+
+            currentInteraction = CachingManager.getCurrentInteraction().get(((FactObject)object).getTitle());
+
+
+
+
 
 
         if(!isVisibleToUser)
@@ -129,6 +142,52 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
 
         return view;
+
+
+
+    }
+
+    private void setInteractionForFlashcard(Integer interaction) {
+
+
+
+            switch (interaction) {
+
+                case 1:
+
+                    activity.startLikeAnimation();
+
+
+                    break;
+
+                case 2:
+
+
+                    activity.startClapAnimation();
+
+
+                    break;
+
+                case 3:
+
+                    activity.startPalmAnimation();
+
+
+                    break;
+
+                case 4:
+
+                    activity.startDislikeAnimation();
+
+
+                    break;
+
+                 default:
+
+                     activity.setDefaultInteractions(activity.currentInteractionLayout);
+            }
+
+
 
 
 
@@ -213,7 +272,9 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
 
             }
+
         }
+
     }
 
     @SuppressLint("ClickableViewAccessibility")

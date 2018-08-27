@@ -18,6 +18,6 @@ public class Facts {
     public String toString() {
         return "Facts{" +
                 "facts=" + facts +
-                '}';
+                "}";
     }
 }

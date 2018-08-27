@@ -1,6 +1,7 @@
 package patahai.digitopper.com.ptahailatestdesign.managers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import patahai.digitopper.com.ptahailatestdesign.cache.ApplicationCache;
 import patahai.digitopper.com.ptahailatestdesign.models.FactObject;
@@ -54,6 +55,11 @@ public class CachingManager {
 
     }
 
+    public static void setCurrentINteraction(String title, Integer interaction){
+
+        ApplicationCache.getInstance().setStringsOfFactInHashMap(title,interaction);
+    }
+
     public static ArrayList<FactObject> getEnglishFactList()
     {
         return ApplicationCache.getInstance().getHundredFacsList();
@@ -86,6 +92,10 @@ public class CachingManager {
     public static ArrayList<FactObject> getNewsHindiList()
     {
         return ApplicationCache.getInstance().getNewsListHindi();
+    }
+    public static HashMap<String,Integer> getCurrentInteraction(){
+
+        return ApplicationCache.getInstance().getTitleInteractionList();
     }
 
 }

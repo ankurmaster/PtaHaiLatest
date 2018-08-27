@@ -54,26 +54,10 @@ public class SearchActivity extends AppCompatActivity{
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchResultsRecyclerView.setLayoutManager(layoutManager);
 
-        searchResultAdapter = new SearchResultAdapter(getApplicationContext(),SearchResultsToDisplay);
+        searchResultAdapter = new SearchResultAdapter(getApplicationContext(),SearchResultsToDisplay,this);
         searchResultsRecyclerView.setAdapter(searchResultAdapter);
 
-       /* searchAutoComplete = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-        searchAutoComplete.setHintTextColor(Color.GRAY);
 
-
-        CustomSearchAdapter searchAdapter = new CustomSearchAdapter(searchList,this);
-        searchAutoComplete.setAdapter(searchAdapter);
-
-
-        searchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                ModelClassForSearch queryString= (ModelClassForSearch) parent.getItemAtPosition(position);
-                searchAutoComplete.setText(queryString.getCategories());
-
-            }
-        });*/
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -96,7 +80,6 @@ public class SearchActivity extends AppCompatActivity{
 
                         SearchResultsToDisplay.add(modelClass);
 
-                        Log.e("Title",modelClass.getTitle());
                     }
 
                 }

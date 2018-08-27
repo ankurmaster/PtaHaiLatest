@@ -57,10 +57,11 @@ import com.wooplr.spotlight.utils.SpotlightListener;
 
 import java.util.ArrayList;
 
+import patahai.digitopper.com.ptahailatestdesign.Utills.Constant;
 import patahai.digitopper.com.ptahailatestdesign.managers.CachingManager;
 import patahai.digitopper.com.ptahailatestdesign.models.FactObject;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, SlidingUpPanelLayout.PanelSlideListener, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SlidingUpPanelLayout.PanelSlideListener, AdapterView.OnItemClickListener,CustomFlashcardViewpager.OnPageChangeListener {
 
 
     private View fill_animation_bg;
@@ -87,10 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ListView nav_menu_items;
     private CustomNavDrawerAdapter customNavDrawerAdapter;
     private ImageView overflow_menu;
-    private Integer currentInteractionLayout;
+    public Integer currentInteractionLayout;
     private Button log_in_btn;
     private Button sign_in_btn;
-
+    public boolean isInteractionSelected = false;
 
 
     @Override
@@ -256,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Integer posi = getIntent().getExtras().getInt("listPosi");
             mainPageAdpater.AddFlashCard(SearchedArrayList);
             viewpager.setAdapter(mainPageAdpater);
+            viewpager.setOnPageChangeListener(this);
             viewpager.setPageTransformer(false,new BackgroundToForegroundTransformer());
             viewpager.setCurrentItem(posi);
 
@@ -308,10 +310,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void addEnglishFacts(){
 
-        Log.e("Hello ankur",CachingManager.getEnglishFactList().toString());
         mainPageAdpater.AddFlashCard(CachingManager.getEnglishFactList());
         viewpager.setAdapter(mainPageAdpater);
         viewpager.setPageTransformer(false, new BackgroundToForegroundTransformer());
+        viewpager.setOnPageChangeListener(this);
 
     }
 
@@ -320,6 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainPageAdpater.AddFlashCard(CachingManager.getHindiFactList());
         viewpager.setAdapter(mainPageAdpater);
         viewpager.setPageTransformer(false, new BackgroundToForegroundTransformer());
+        viewpager.setOnPageChangeListener(this);
     }
 
     @Override
@@ -337,29 +340,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.like_IV:
 
+                FactObject factObject = mainPageAdpater.FlashCardList.get(viewpager.getCurrentItem());
+                CachingManager.setCurrentINteraction(factObject.getTitle(),1);
                 startLikeAnimation();
 
                 break;
 
             case R.id.clap_IV:
 
-                    startClapAnimation();
+                FactObject factObject1 = mainPageAdpater.FlashCardList.get(viewpager.getCurrentItem());
+                CachingManager.setCurrentINteraction(factObject1.getTitle(),2);
+                startClapAnimation();
+
                 break;
 
 
             case R.id.palm_IV:
 
-
-
-                    startPalmAnimation();
-
-
+                FactObject factObject2 = mainPageAdpater.FlashCardList.get(viewpager.getCurrentItem());
+                CachingManager.setCurrentINteraction(factObject2.getTitle(),3);
+                startPalmAnimation();
 
                 break;
 
 
             case R.id.dislike_IV:
 
+                FactObject factObject3 = mainPageAdpater.FlashCardList.get(viewpager.getCurrentItem());
+                CachingManager.setCurrentINteraction(factObject3.getTitle(),4);
                 startDislikeAnimation();
 
                 break;
@@ -535,8 +543,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.show();
     }
 
-    private void startDislikeAnimation() {
+    public void startDislikeAnimation() {
 
+        isInteractionSelected = true;
 
         findViewById(R.id.interactionHolderLayout).animate().alpha(0).setDuration(500).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -549,10 +558,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.dislike_layout).animate().alpha(1).setDuration(300).setInterpolator(new AccelerateInterpolator()).start();
         currentInteractionLayout = R.id.dislike_layout;
 
+
     }
 
-    private void startLikeAnimation() {
+    public void startLikeAnimation() {
 
+        isInteractionSelected = true;
 
         findViewById(R.id.interactionHolderLayout).animate().alpha(0).setDuration(500).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -566,9 +577,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.like_layout).animate().alpha(1).setDuration(300).setInterpolator(new AccelerateInterpolator()).start();
         currentInteractionLayout = R.id.like_layout;
 
+
     }
 
-    private void startClapAnimation() {
+    public void startClapAnimation() {
+
+        isInteractionSelected = true;
 
         findViewById(R.id.interactionHolderLayout).setClickable(false);
         findViewById(R.id.interactionHolderLayout).animate().alpha(0).setDuration(500).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
@@ -582,9 +596,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.clap_layout).animate().alpha(1).setDuration(300).setInterpolator(new AccelerateInterpolator()).start();
         currentInteractionLayout = R.id.clap_layout;
 
+
     }
 
-    private void startPalmAnimation() {
+    public void startPalmAnimation() {
+
+        isInteractionSelected = true;
 
         findViewById(R.id.interactionHolderLayout).setClickable(false);
         findViewById(R.id.interactionHolderLayout).animate().alpha(0).setDuration(500).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
@@ -598,11 +615,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.palm_layout).animate().alpha(1).setDuration(300).setInterpolator(new AccelerateInterpolator()).start();
         currentInteractionLayout = R.id.palm_layout;
 
+
     }
 
-    private void setDefaultInteractions(int layout_ID){
+    public void setDefaultInteractions(int layout_ID){
 
-        findViewById(layout_ID).setAlpha(0);
+        findViewById(R.id.like_layout).setAlpha(0);
+        findViewById(R.id.dislike_layout).setAlpha(0);
+        findViewById(R.id.clap_layout).setAlpha(0);
+        findViewById(R.id.palm_layout).setAlpha(0);
         findViewById(R.id.interactionHolderLayout).animate().alpha(1).setDuration(300).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -648,7 +669,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewpager.setCurrentItem(0,true);
 
     }
-
 
 
     public void addNewsCat(){
@@ -752,68 +772,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
-      /* if(subCategories.getSubCatTitle().equalsIgnoreCase("Science")){
-
-            addScienceFacts("Science");
-            sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-        }
-        else if(subCategories.getSubCatTitle().equalsIgnoreCase("Current Affairs")){
-
-           // addCurrentAffairs();
-            addScienceFacts("Current Affairs");
-            sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-        }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Nature")){
-
-            //addNatureFacts();
-           addScienceFacts("Nature");
-            sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-        }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Art")){
-
-            //addSportsFacts();
-           addScienceFacts("Art");
-            sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-        }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Auto")){
-
-          // addSportsFacts();
-           addScienceFacts("Auto");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Food")){
-
-          // addSportsFacts();
-           addScienceFacts("Food");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Health")){
-
-           //addSportsFacts();
-           addScienceFacts("Health");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Map")){
-
-           //addSportsFacts();
-           addScienceFacts("Map");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }else if(subCategories.getSubCatTitle().equalsIgnoreCase("Travel")){
-
-           //addSportsFacts();
-           addScienceFacts("Travel");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }
-       else if(subCategories.getSubCatTitle().equalsIgnoreCase("History")){
-
-           //addSportsFacts();
-           addScienceFacts("History");
-           sliding_layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
-       }*/
 
 
     }
@@ -965,7 +923,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void searchFactsOnClick(View view) {
 
-        startActivity(new Intent(this,SearchActivity.class));
+        startActivityForResult(new Intent(this,SearchActivity.class),123);
 
     }
 
@@ -1042,7 +1000,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+        if(isInteractionSelected)
+        setDefaultInteractions(currentInteractionLayout);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+
+    }
 }
 
 

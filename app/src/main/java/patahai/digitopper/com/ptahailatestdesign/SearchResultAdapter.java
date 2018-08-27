@@ -24,7 +24,8 @@ public class SearchResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private Context context;
     private ArrayList<FactObject> factsList  = new ArrayList<>();
 
-    public SearchResultAdapter(Context context, ArrayList<FactObject> factsList) {
+
+    public SearchResultAdapter(Context context, ArrayList<FactObject> factsList,SearchActivity searchActivity) {
         this.context = context;
         this.factsList = factsList;
     }
@@ -64,6 +65,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 intent.putExtra("searchedFactsList",factsList);
                 intent.putExtra("listPosi",position);
                 context.startActivity(intent);
+
 
             }
         });

@@ -192,7 +192,6 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
          flashcard_flip = view.findViewById(R.id.flashcard_flip);
          back_flash_card = view.findViewById(R.id.back_flash_card);
-        // bookmark_IV =view.findViewById(R.id.bookmark_IV);
          flash_card_IV = view.findViewById(R.id.flash_card_IV);
          shortDesp_TV = view.findViewById(R.id.short_description);
          longDesp_TV = view.findViewById(R.id.long_description);
@@ -218,14 +217,6 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
                                                return (event.getAction() == MotionEvent.ACTION_MOVE);
                                            }
                                        });
-      /*
-
-
-
-         front_flash_card.setOnClickListener(this);
-         back_flash_card.setOnClickListener(this);
-         bookmark_IV.setOnClickListener(this);*/
-
 
 
 
@@ -236,104 +227,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
         switch(v.getId()) {
-           /* case R.id.bookmark_IV:
 
-                bookmark_IV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_action__bookmark));
-
-                break;
-
-            case R.id.front_flash_card:
-
-                flashcard_flip.flipTheView(true);
-                break;
-
-
-            case R.id.back_flash_card:
-
-                flashcard_flip.flipTheView(true);
-                if(flashcard_flip.isBackSide())flashcard_flip.flipTheView(true);
-                break;
-
-
-
-            case R.id.like_IV:
-
-
-                like_IV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.like2));
-
-                break;
-
-
-            case R.id.clap_IV:
-
-                clap_IV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.clap2));
-                break;
-
-
-            case R.id.palm_IV:
-
-                palm_IV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ap2));
-
-                break;
-
-
-            case R.id.thumbs_down_IV:
-
-                thumbs_down_IV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.dislike2));
-                break;
-
-            case R.id.current_affairs_IV:
-
-                addCurrentAffairs();
-
-                break;
-
-            case R.id.nature_IV:
-
-
-                addNatureFacts();
-
-                break;
-
-            case R.id.science_IV:
-
-                addScienceFacts();
-
-                break;
-
-            case R.id.Politics:
-
-                addPoliticsFacts();
-
-                break;
-
-            case R.id.Sports:
-
-                addSportsFacts();
-
-                break;
-
-
-            case R.id.Hollywood:
-
-                addHollywoodfacts();
-
-                break;
-
-            case R.id.Bollywood:
-
-                addBollywoodFacts();
-
-                break;
-
-
-            case R.id.goToSearchActivityOnClick:
-
-                startActivity(new Intent(getContext(),SearchActivity.class));
-
-                break;
-
-*/
 
             case R.id.newButton:
 

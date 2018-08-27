@@ -74,14 +74,14 @@ public class PersistentManager {
         return object;
     }
 
-    public static void setIsFirstTime(boolean isFirstTime)
+    public static void setIsFirstTime(int isFirstTime)
     {
         writeContentToSharedPreferences("isFirstTime",isFirstTime);
     }
 
-    public static boolean getIsFirstTime()
+    public static int getIsFirstTime()
     {
-        return (Boolean) getContentFromSharedPreferences("isFirstTime",Boolean.class);
+        return (Integer) getContentFromSharedPreferences("isFirstTime",Integer.class);
     }
 
 }

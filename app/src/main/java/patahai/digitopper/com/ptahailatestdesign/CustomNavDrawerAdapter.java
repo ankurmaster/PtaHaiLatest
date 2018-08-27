@@ -119,11 +119,16 @@ public class CustomNavDrawerAdapter extends BaseAdapter {
 
                         activity.addEnglishFacts();
                         activity.navigation_drawer.closeDrawers();
+                        LanguageSelectorActivity.isEnglish = true;
+
+
                     }
                     else {
 
                         activity.addHindiFacts();
                         activity.navigation_drawer.closeDrawers();
+                        LanguageSelectorActivity.isEnglish = false;
+
 
                     }
                 }

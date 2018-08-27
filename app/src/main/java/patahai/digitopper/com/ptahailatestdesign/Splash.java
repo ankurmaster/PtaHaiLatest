@@ -35,10 +35,10 @@ public class Splash extends AppCompatActivity implements ConnectionInterface {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new SplashPresenter();
+        presenter = new SplashPresenter(this);
         BConnectAPIClient.init(BConnectAPIRequest.class, getApplicationContext());
         setContentView(R.layout.activity_splash);
-        PersistentManager.writeContentToSharedPreferences("ok",String.class);
+        PersistentManager.writeContentToSharedPreferences("ok",Integer.class);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ImageView logo = findViewById(R.id.logo);
 
@@ -56,16 +56,6 @@ public class Splash extends AppCompatActivity implements ConnectionInterface {
                     public boolean onResourceReady(GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource)
                     {
                         presenter.getFactsFromServer();
-                        if(!PersistentManager.getIsFirstTime())
-                        {
-                            startActivity(new Intent(getApplicationContext(), LanguageSelectorActivity.class));
-
-                        }
-                        else {
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                            PersistentManager.setIsFirstTime(true);
-                        }
-                        finish();
 
                         return false;
                     }

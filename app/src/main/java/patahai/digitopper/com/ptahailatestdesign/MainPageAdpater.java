@@ -28,7 +28,8 @@ public class MainPageAdpater extends FragmentStatePagerAdapter {
 
     public void AddFlashCard(ArrayList<FactObject> factsList)
     {
-             factsList.addAll(FlashCardList);
+        this.FlashCardList.clear();
+        FlashCardList.addAll(factsList);
     }
 
     @Override

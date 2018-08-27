@@ -1,5 +1,6 @@
 package patahai.digitopper.com.ptahailatestdesign.Presenters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import patahai.digitopper.com.ptahailatestdesign.DataLoader;
 import patahai.digitopper.com.ptahailatestdesign.LanguageSelectorActivity;
 import patahai.digitopper.com.ptahailatestdesign.MainActivity;
+import patahai.digitopper.com.ptahailatestdesign.Splash;
 import patahai.digitopper.com.ptahailatestdesign.Utills.Constant;
 import patahai.digitopper.com.ptahailatestdesign.apiclient.BConnectAPICallback;
 import patahai.digitopper.com.ptahailatestdesign.apiclient.BConnectAPIClient;
@@ -21,7 +23,12 @@ import patahai.digitopper.com.ptahailatestdesign.models.Facts;
 import retrofit2.Call;
 
 public class SplashPresenter implements ConnectionInterface {
+    private Context context;
 
+    public SplashPresenter(Context context)
+    {
+        this.context = context;
+    }
     @Override
     public void getFactsFromServer() {
         try
@@ -41,6 +48,16 @@ public class SplashPresenter implements ConnectionInterface {
             public void onSuccess(Facts object) {
                 ArrayList<FactObject> list = object.getFacts();
                 prepareFactsMap(list);
+                if(PersistentManager.getIsFirstTime()==1)
+                {
+                    context.startActivity(new Intent(context.getApplicationContext(),MainActivity.class));
+                }
+                else {
+                    context.startActivity(new Intent(context.getApplicationContext(), LanguageSelectorActivity.class));
+                    PersistentManager.setIsFirstTime(1);
+                }
+                ((Splash)context).finish();
+
 
               /*  for (int i=0;i<list.size();i++) {
 

@@ -308,6 +308,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void addEnglishFacts(){
 
+        Log.e("Hello ankur",CachingManager.getEnglishFactList().toString());
         mainPageAdpater.AddFlashCard(CachingManager.getEnglishFactList());
         viewpager.setAdapter(mainPageAdpater);
         viewpager.setPageTransformer(false, new BackgroundToForegroundTransformer());
@@ -336,24 +337,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.like_IV:
 
-
-
                 startLikeAnimation();
-
-
 
                 break;
 
-
             case R.id.clap_IV:
 
-
-
-
                     startClapAnimation();
-
-
-
                 break;
 
 
@@ -632,7 +622,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void addBollywoodFacts(){
 
         ArrayList<FactObject> list;
-        mainPageAdpater.FlashCardList.clear();
         if(LanguageSelectorActivity.isEnglish)
         {
             list = CachingManager.getEntertainmentList();
@@ -642,6 +631,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             list = CachingManager.getEntertainmentHindiList();
         }
+        if(list.isEmpty())
+            return;
         mainPageAdpater.AddFlashCard(list);
         viewpager.getAdapter().notifyDataSetChanged();
         viewpager.setCurrentItem(0,true);
@@ -661,7 +652,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void addNewsCat(){
-        ArrayList<FactObject> list = new ArrayList<>();
+        ArrayList<FactObject> list;
         if(LanguageSelectorActivity.isEnglish)
         {
 
@@ -672,6 +663,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             list = CachingManager.getNewsHindiList();
         }
+        if(list.isEmpty())
+            return;
         mainPageAdpater.AddFlashCard(list);
         viewpager.getAdapter().notifyDataSetChanged();
         viewpager.setCurrentItem(0,true);

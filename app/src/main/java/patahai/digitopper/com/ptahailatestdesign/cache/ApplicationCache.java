@@ -106,10 +106,10 @@ public class ApplicationCache {
     }
     public void setHundredFacsList(FactObject object)
     {
-        this.KnowledgeList.add(object);
+        this.HundredFacsList.add(object);
     }
     public void setHundredFacsListHindi(FactObject object)
     {
-        this.KnowledgeListHindi.add(object);
+        this.HundredFacsListHindi.add(object);
     }
 }

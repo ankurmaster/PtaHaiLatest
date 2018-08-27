@@ -64,7 +64,7 @@ public class FactObject implements Serializable {
     }
 
     public String getLanguage() {
-        return language;
+        return language.toLowerCase();
     }
 
     public void setLanguage(String titleHindi) {

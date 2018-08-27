@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
+import patahai.digitopper.com.ptahailatestdesign.Utills.Constant;
 import patahai.digitopper.com.ptahailatestdesign.models.FactObject;
 
 public class SlideFragment extends Fragment implements View.OnClickListener{
@@ -51,6 +52,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
     public ProgressBar webViewLoadingProgress;
     public RelativeLayout flash_card_parent;
     private Object object;
+    private boolean isVisibleToUser = false;
 
 
 
@@ -68,11 +70,11 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
         init(view);
 
 
-         object = getArguments().getSerializable("FragObj");
+        object = getArguments().getSerializable("FragObj");
 
         Glide.with(getActivity()).asBitmap().load(((FactObject)object).getImage().replaceAll("\\\\","")).into(flash_card_IV);
 
-         setCurrentFlashCardCategory(object);
+        setCurrentFlashCardCategory(object);
 
 
 
@@ -94,7 +96,33 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
         category_TV.setText(((FactObject)object).getCategory());
 
 
+        if(!isVisibleToUser)
+        {
+            if (object != null) {
+                switch (((FactObject) object).getParent()) {
 
+                    case Constant.KEY_KNOWLEDGE:
+
+                        activity.initGridSubCatKnowledge();
+
+                        break;
+
+                    case Constant.KEY_NEWS:
+
+
+                        activity.initGridSubCatNews();
+
+                        break;
+
+                    case Constant.KEY_ENTERTAINMENT:
+
+                        activity.initGridSubCatEntertainment();
+
+                        break;
+                }
+            }
+
+        }
 
 
 
@@ -111,7 +139,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
         if (object != null) {
             switch (((FactObject) object).getParent()) {
 
-                case "Knowledge":
+                case Constant.KEY_KNOWLEDGE:
 
 
                     knowledgeButton.setTextColor(Color.parseColor("#ffffff"));
@@ -122,7 +150,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
                     }
                     break;
 
-                case "News":
+                case Constant.KEY_NEWS:
 
 
                     newsButton.setTextColor(Color.parseColor("#ffffff"));
@@ -134,7 +162,7 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
                     }
                     break;
 
-                case "Entertainment":
+                case Constant.KEY_ENTERTAINMENT:
 
 
                     entertainmentButton.setTextColor(Color.parseColor("#ffffff"));
@@ -159,23 +187,24 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
         if(isVisibleToUser) {
 
+            this.isVisibleToUser = isVisibleToUser;
             if (object != null) {
                 switch (((FactObject) object).getParent()) {
 
-                    case "Knowledge":
+                    case Constant.KEY_KNOWLEDGE:
 
                         activity.initGridSubCatKnowledge();
 
                         break;
 
-                    case "News":
+                    case Constant.KEY_NEWS:
 
 
                         activity.initGridSubCatNews();
 
                         break;
 
-                    case "Entertainment":
+                    case Constant.KEY_ENTERTAINMENT:
 
                         activity.initGridSubCatEntertainment();
 
@@ -251,9 +280,9 @@ public class SlideFragment extends Fragment implements View.OnClickListener{
 
             case R.id.readMoreTV:
 
-               activity.hideToolbarAndOtherViews();
+                activity.hideToolbarAndOtherViews();
 
-               break;
+                break;
 
 
             case R.id.subCatParentLayout:

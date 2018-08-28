@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         overflow_menu = findViewById(R.id.overflow_menu);
         findViewById(R.id.setToDefaultButton).setOnClickListener(this);
         findViewById(R.id.setToDefaultButton).setClickable(false);
-        log_in_btn = findViewById(R.id.log_in_btn);
+        log_in_btn = findViewById(R.id.sign_up_btn);
         log_in_btn.setOnClickListener(this);
         sign_in_btn = findViewById(R.id.sign_in_btn);
         sign_in_btn.setOnClickListener(this);
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
-            case R.id.log_in_btn:
+            case R.id.sign_up_btn:
 
                 startActivity(new Intent(MainActivity.this,SignUpActivity.class));
 

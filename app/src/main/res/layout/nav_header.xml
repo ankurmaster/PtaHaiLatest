@@ -38,6 +38,7 @@ save flashcards, add facts"
              android:textColor="#fff"
              android:fontFamily="@font/loraregulara"
              android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
              />
 
          <RelativeLayout
@@ -64,13 +65,13 @@ save flashcards, add facts"
                 />
 
              <Button
-                 android:id="@+id/log_in_btn"
+                 android:id="@+id/sign_up_btn"
                  android:layout_toRightOf="@id/sign_in_btn"
                  android:layout_width="wrap_content"
                  android:layout_height="40dp"
                  android:background="@drawable/sign_in_bg"
                  android:layout_marginRight="20dp"
-                 android:text="Log In"
+                 android:text="Sign Up"
                  android:textSize="12sp"
                  android:fontFamily="@font/loraregulara"
                  android:textColor="#fff"

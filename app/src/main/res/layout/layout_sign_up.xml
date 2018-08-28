@@ -20,53 +20,67 @@
         android:layout_below="@+id/logo"
         android:layout_width="match_parent"
         android:text="India"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:textColor="#313131"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/loraregular"
         android:editable="false"
         android:layout_marginBottom="15dp"
-        android:textSize="16sp"
-        android:layout_height="wrap_content"/>
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#cfcfcf"/>
 
     <LinearLayout
         android:id="@+id/mobile_container"
         android:layout_below="@+id/country"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/loraregular"
-        android:editable="false"
-        android:textSize="16sp"
-        android:text="+91"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/loraregular"
+            android:editable="false"
+            android:textColor="#313131"
+            android:textSize="15dp"
+            android:text="+91"
+            android:backgroundTint="#cfcfcf"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/loraregular"
-            android:textSize="16sp"
-            android:hint="Mobile Number" />
+            android:textSize="15sp"
+            android:hint="Mobile Number"
+            android:textColorHint="#c6c6c6"
+            android:textColor="#313131"
+            android:backgroundTint="#cfcfcf"
+            android:layout_marginLeft="2dp"
+            android:textCursorDrawable="@drawable/edit_text_cursor"/>
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/btn_signUp"
         android:layout_below="@+id/mobile_container"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:gravity="center"
-        android:textColor="#000"
+        android:textColor="#313131"
         android:layout_centerHorizontal="true"
         android:padding="10dp"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/loraregular"
         android:background="@drawable/read_more_capsule_button"
-        android:text="Sign Up"/>
+        android:text="Log In"
+        />
 
     <TextView
         android:id="@+id/tv_useEmail"
@@ -75,10 +89,10 @@
         android:layout_below="@id/btn_signUp"
         android:text="Use Email instead?"
         android:layout_centerHorizontal="true"
-        android:textSize="16sp"
+        android:textSize="13sp"
         android:fontFamily="@font/loraregular"
         android:layout_marginTop="10dp"
-        android:textColor="#ffbe33"/>
+        android:textColor="#fbca16"/>
     <LinearLayout
         android:id="@+id/loginWith_container"
         android:layout_width="wrap_content"
@@ -90,10 +104,12 @@
         android:orientation="horizontal">
         <View
             android:layout_width="60dp"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#aaa"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,14 +117,14 @@
         android:textSize="12sp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/loraregular"
-        android:textColor="#000000"/>
+        android:textColor="#313131"/>
 
         <View
             android:layout_width="60dp"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#aaa"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="12dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -140,24 +156,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/social_container"
-        android:text="Already have an account?"
-        android:textSize="16sp"
+        android:text="Visiting us for the first time?"
+        android:textSize="15sp"
         android:fontFamily="@font/loraregular"
         android:layout_centerHorizontal="true"
-        android:textColor="#000000"/>
+        android:textColor="#313131"/>
     <TextView
         android:id="@+id/btn_Login"
         android:layout_below="@+id/tv_alreadyHaveAccount"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:padding="10dp"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
+        android:textColor="#313131"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
         android:gravity="center"
         android:background="@drawable/read_more_capsule_button"
         android:fontFamily="@font/loraregular"
         android:textSize="16sp"
-        android:text="Login"/>
+        android:text="Sign Up"/>
 
 </RelativeLayout>

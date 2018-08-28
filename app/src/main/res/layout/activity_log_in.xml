@@ -1,10 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#fff">
 
     <ImageView
+        android:id="@+id/logo_IV"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/logo"/>
+
+    <EditText
+        android:id="@+id/first_name_ET"
+        android:layout_below="@id/logo_IV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/sign_up"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#c6c6c6"
+        android:hint="First Name"
+        android:textSize="15sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColorHint="#838383"
+        android:layout_marginBottom="20dp"
+        android:textCursorDrawable="@drawable/edit_text_cursor"/>
+
+    <EditText
+        android:id="@+id/last_name_ET"
+        android:layout_below="@id/first_name_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#c6c6c6"
+        android:hint="Last Name"
+        android:textSize="15sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColorHint="#838383"
+        android:layout_marginBottom="20dp"
+        android:textCursorDrawable="@drawable/edit_text_cursor"/>
+
+    <EditText
+        android:id="@+id/country_name_ET"
+        android:layout_below="@id/last_name_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#c6c6c6"
+        android:hint="India"
+        android:textSize="15sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColorHint="#838383"
+        android:layout_marginBottom="20dp"
+        android:textCursorDrawable="@drawable/edit_text_cursor"/>
+
+
+    <EditText
+        android:id="@+id/mobile_ET"
+        android:layout_below="@id/country_name_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#c6c6c6"
+        android:hint="Mobile number"
+        android:textSize="15sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColorHint="#838383"
+        android:textCursorDrawable="@drawable/edit_text_cursor"
+        />
+
+
+
+    <TextView
+        android:id="@+id/alternate_TV"
+        android:layout_below="@id/mobile_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:fontFamily="@font/loraregulara"
+        android:text="Use Email instead?"
+        android:textColor="@color/logoColor"
+        android:gravity="end"
+        />
+
+    <EditText
+        android:id="@+id/dob_ET"
+        android:layout_below="@id/alternate_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#c6c6c6"
+        android:hint="Date Of Birth"
+        android:textSize="15sp"
+        android:fontFamily="@font/loraregulara"
+        android:textColorHint="#838383"
+        android:textCursorDrawable="@drawable/edit_text_cursor"/>
+
+    <LinearLayout
+        android:id="@+id/gender_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dob_ET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="60dp"
+            android:layout_height="0.5dp"
+            android:background="#aaa"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are?"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/loraregular"
+            android:textColor="#313131"/>
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="0.5dp"
+            android:background="#aaa"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_Login"
+        android:layout_below="@+id/gender_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#313131"
+        android:layout_marginTop="80dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:background="@drawable/read_more_capsule_button"
+        android:fontFamily="@font/loraregular"
+        android:textSize="16sp"
+        android:text="Sign Up"/>
+
 
 </RelativeLayout>
